@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+input[type=text], input[type=submit], input[type=password],input[type=file] {
+    border: 1px solid #EBB2A6;
+  }
+{% endblock style %}
+{% block side %}
+<div class="container">
+    <div class="row mt-4">
+        <h3 class="text-danger text-center mb-5">Voter Registration</h3>
+            <form action="" method="POST" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                {% if form %}
+                <div class="row">
+                    {% for fm in form %}
+                    <div class="col-6">
+                        <div class="form-group mb-2">
+                           <b>{{fm.label_tag}}</b>  {{fm}} {{fm.errors|striptags}}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <input type="submit" class="btn btn-success w-100 mb-5 mt-2" value="Submit">
+            </form>
+    </div>
+</div>
+{% endblock side %}
+
+{% block script %}
+    {{block.super}}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+        $( "#datepicker" ).datepicker();
+        $( "#anim" ).on( "change", function() {
+        $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
+        });
+    } );
+    </script>
+{% endblock script %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block mystyle %}
+
+{% endblock mystyle %}
+{% block side %}
+<div class="container">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <h4 class="text-center p-3">Log In</h4>
+        <form method="POST" action="" enctype="multipart/form-data" novalidate >
+        {% csrf_token %}
+          {% if form %}
+            {% for field in form %} 
+              <div class="form-group mt-2">
+                {{field.label_tag}} {{field}} <p style="color: red">{{field.errors|striptags}}</p>
+              </div> 
+            {% endfor %}
+          {% endif %}
+        <input type="submit" class="btn btn-info btn-block my-2 w-100" value="LogIn">
+      </form>
+      </div>
+      <div class="col-2"></div>
+    </div>
+     
+  </div>
+    
+  
+{% endblock side %}
+
+{% block script %}
+    {{block.super}}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+        $( "#datepicker" ).datepicker();
+        $( "#anim" ).on( "change", function() {
+        $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
+        });
+    } );
+    </script>
+{% endblock script %}

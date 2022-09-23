@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+
+{% endblock style %}
+{% block side %}
+<div class="container">
+  <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+          {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <strong>{{message.tags}}</strong> {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+          {% endif %}
+      </div>
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="http://www.ecs.gov.bd/front/assets/images/logo.png" alt="Card image cap" style="height: 200px; width: 200px;">
+                        <div class="card-body">
+                          <h5 class="card-title">Election commissioner</h5>
+                          <p class="card-text">The Election Commission is regarded as the guardian of elections in the country. In every election, it issues a Model Code of Conduct for political parties and candidates to conduct elections in a free and fair manner.</p>
+                          <a href="http://www.ecs.gov.bd/" class="btn btn-primary">More Details</a>
+                          <a href="{% url 'election_commisoner' %}" class="btn btn-primary">Back Home</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-8 col-md-6 col-sm-12">
+                  <div class="row">
+                    {% for voter in voters %}
+                     <div class="col-md-6 mt-5 float-right">
+                          <div class="card">
+                              <div class="card-header bg-dark text-white">
+                                Voter Name : {{voter.first_name}} {{voter.last_name}}
+                              </div>
+                              <div class="card-body">
+                                <img class="card-img-top" src="{{voter.profile_pic.url}}" alt="Card image cap" style="height: 250px; width: 100%;">
+                              </div>
+                              <div class="card-footer">
+                                <p><b>Voter Id: {{voter.username}}</b></p>
+                                <p><b>District : {{voter.zilla}}</b></p>
+                                  <a href="{% url 'delete_voter_id' voter.id %}" class="btn btn-danger w-100">Delete</a>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                      {% endfor %}
+                  </div>
+                  
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock side %}
+
+{% block script %}
+    {{block.super}}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    </script>
+{% endblock script %}

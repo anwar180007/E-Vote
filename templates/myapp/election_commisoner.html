@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+
+{% endblock style %}
+{% block side %}
+<div class="container">
+  <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+          {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <strong>{{message.tags}}</strong> {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+          {% endif %}
+      </div>
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12 mt-5">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="http://www.ecs.gov.bd/front/assets/images/logo.png" alt="Card image cap" style="height: 200px; width: 200px;">
+                        <div class="card-body">
+                          <h5 class="card-title">Election commissioner</h5>
+                          <p class="card-text">The Election Commission is regar -ded as the guardian of elections in the country. In every election, it issue a Model Code of Conduct for political parties and candidates to conduct elections in a free and fair manner.</p>
+                          
+                        </div>
+                        <div class="card-footer text-center">
+                          <a href="http://www.ecs.gov.bd/" class="btn btn-primary text-center">More Details</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-8 col-md-6 col-sm-12 mt-4">
+                  <div class="row">
+                     <div class="col-md-6 mb-5">
+                          <div class="card">
+                              <div class="card-header bg-warning">
+                                Task-01
+                              </div>
+                              <div class="card-body">
+                                <h5 class="card-title text-center">Add | Delete Voter</h5>
+                                <p class="card-text">In electoral systems, voter registration (or enrollment) is the requirement that a person otherwise eligible to vote must register (or enroll) on an electoral roll, which is usually a prerequisite for being entitled or permitted to vote.</p>
+                              </div>
+                              <div class="card-footer text-center">
+                                  <a href="{% url 'user_signup' %}" class="btn btn-primary mr-5 mb-2">Add Voter</a>
+                                  <a href="{% url 'delete_voter' %}" class="btn btn-primary mb-2 float-right">Delete Voter</a>
+                              </div>
+                          </div>
+                      </div>
+                     <div class="col-md-6 mb-5">
+                          <div class="card">
+                              <div class="card-header text-center bg-warning">
+                                Task-02
+                              </div>
+                              <div class="card-body">
+                                <h5 class="card-title text-center">Add or Delete Candidate </h5>
+                                <p class="card-text">A candidate is ultimately an applicant for a position. The term most commonly refers to candidates standing for election for political offices.
+
+                                  Origin of the word candidate is the Latin term candidare toga, which means the white robe of candidates standing.</p>
+                              </div>
+                              <div class="card-footer text-center">
+                                  <a href="{% url 'add_candidate' %}" class="btn btn-primary mr-5 mb-2">Add Candidate</a>
+                                  <a href="{% url 'delete_candidate' %}" class="btn btn-primary mb-2 float-right">Delete Candidate</a>
+                              </div>
+                            </div>
+                         </div>
+                      </div>
+          
+                      <div class="row">
+                        <div class="col-md-6 mb-5">
+                          <div class="card">
+                            <div class="card-header bg-warning">
+                              Task-03
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title text-center">Shedule a date for Next Election</h5>
+                              <p class="card-text">A candidate is ultimately an applicant for a position. The term most commonly refers to candidates standing for election for political offices.
+
+                                Origin of the word candidate is the Latin term candidare toga, which means the white robe of candidates standing for a position. The term later began to be used for candidates for political positions.</p>
+                            </div>
+                            <div class="card-footer text-center">
+                              <a href="{% url 'shedule_for_vote' %}" class="btn btn-primary mr-5 mb-2">Add Shedule</a>
+                            </div>
+                          </div>
+                         </div>
+                        <div class="col-md-6 mb-5">
+                          <div class="card">
+                            <div class="card-header bg-warning">
+                              Task-04
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title text-center">Show the Election Result</h5>
+                              <p class="card-text">Election results reflect the outcome and level of participation in electoral contests. They can also provide the basis for a runoff election, depending on the results and the electoral system. Election results are tabulated based on vote counts from the polling station level. Depending on the electoral, polling station.....</p>
+                            </div>
+                            <div class="card-footer text-center">
+                              <a href="{% url 'show_election_result' %}" class="btn btn-primary text-center mr-5 mb-2">Show Result</a>
+                            </div>
+                          </div>
+                         </div>
+             
+                      
+                      
+                  </div>
+                  
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock side %}
+
+{% block script %}
+    {{block.super}}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    </script>
+{% endblock script %}
